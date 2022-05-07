@@ -1,7 +1,7 @@
 {
-  "name": "Tombot",
+  "name": "Cinutbot",
   "version": "1.0.0",
-  "description": "đồ ngu ngốc.đồ đáng ghét",
+  "description": "Stupid me",
   "main": "bot/index.js",
   "scripts": {
      "start": "node bot"
