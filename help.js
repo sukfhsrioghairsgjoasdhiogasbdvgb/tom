@@ -1,7 +1,7 @@
-const { getParam } = tom.tools;
+const { getParam } = citnut.tools;
 const pageSize = 20;
 async function helpCmd (cmd) {
-	let _msg = `====TOM====\n`;
+	let _msg = `====CITNUT====\n`;
 		_msg += `Lệnh: ${(cmd.command.length > 1) ? cmd.command.join(', ') : cmd.command[0]}\n`;
 		_msg += `Tác giả: ${cmd.author}\n`;
 		_msg += `Mô tả: ${cmd.description}\n`;
@@ -33,31 +33,31 @@ module.exports = {
 	async listen (data) {
 		let { content } = data;
 		if (content == "prefix") {
-			return tom.send("`"+`Prefix là ${tom.config.prefix}`+"`", data)
+			return citnut.send("`"+`Prefix là ${citnut.config.prefix}`+"`", data)
 		}
 	},
 	async call (data) {
-		//citnut.send("`hihihi`", data);
+		//citnut.send("`kkkkkk`", data);
 		let { content } = data;
 		let body = await getParam(content);
-		let index = await tom.plugin();
+		let index = await citnut.plugin();
 
 		if (body) {
 			let check = await checkHelp(body, index);
 			let helpMsg = await helpCmd(check.cmd);
 
 			if (check.result) {
-				return tom.send("```"+helpMsg+"```", data)
+				return citnut.send("```"+helpMsg+"```", data)
 			}
 		} else {
-			let msg = `====TOM====\nDanh sách lệnh:\n`;
+			let msg = `====CITNUT====\nDanh sách lệnh:\n`;
 			let i = 0;
 			for (const command of index.allcommand) {
 				msg += `${i+1}. ${command}\n`;
 				i++
 			};
-			return tom.send("```"+msg+`====CITNUT====`+"```", data)
+			return citnut.send("```"+msg+`====CITNUT====`+"```", data)
 		}
-		//tom.send(msg, data)
+		//citnut.send(msg, data)
 	}
 }
