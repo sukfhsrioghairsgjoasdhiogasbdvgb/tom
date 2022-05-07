@@ -25,7 +25,7 @@ const bot = new Discord.Client();
 bot.on("warn", console.warn);
 bot.on("error", console.error);
 bot.on("ready", function(){
-	console.log(` [TOM] đăng nhập thành công:`.green, `${bot.user.tag}\n`.magenta, `[TOM] prefix: ${citnut.config.prefix}`.green);
+	console.log(` [CITNUT] đăng nhập thành công:`.green, `${bot.user.tag}\n`.magenta, `[CITNUT] prefix: ${citnut.config.prefix}`.green);
 });
 
 globalThis.citnut = {
@@ -90,17 +90,17 @@ async function run () {
 						thuat_toan_ngu_ngok_cua_citnut.push(true);
 						await index.item.call(message)
 					} else {
-						thuat_toan_ngu_ngok_cua_tom.push(false)
+						thuat_toan_ngu_ngok_cua_citnut.push(false)
 					};
-					if (message.content.length == tom.config.prefix.length) {
-						return citnut.send("```"+`Lệnh bạn sử dụng không tồn tại!\n(╯°□°）╯︵ ┻━┻\nĐể hiển thị danh sách lệnh sử dụng ${tom.config.prefix}help`+"```", message)
+					if (message.content.length == citnut.config.prefix.length) {
+						return citnut.send("```"+`Lệnh bạn sử dụng không tồn tại!\n(╯°□°）╯︵ ┻━┻\nĐể hiển thị danh sách lệnh sử dụng ${citnut.config.prefix}help`+"```", message)
 					}
 				};
 				if (index.item.allowListening) {
 					await index.item.listen(message)
 				}
 			};
-			if (!thuat_toan_ngu_ngok_cua_tom.includes(true) && message.content.indexOf(citnut.config.prefix) == 0) { return citnut.send("```"+`Lệnh bạn sử dụng không tồn tại!\n(╯°□°）╯︵ ┻━┻\nĐể hiển thị danh sách lệnh sử dụng ${tom.config.prefix}help`+"```", message) }
+			if (!thuat_toan_ngu_ngok_cua_citnut.includes(true) && message.content.indexOf(citnut.config.prefix) == 0) { return citnut.send("```"+`Lệnh bạn sử dụng không tồn tại!\n(╯°□°）╯︵ ┻━┻\nĐể hiển thị danh sách lệnh sử dụng ${tom.config.prefix}help`+"```", message) }
 		})
 	} catch (e) { console.error(e) }
 };
